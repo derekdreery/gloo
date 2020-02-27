@@ -1,0 +1,40 @@
+[package]
+name = "gloo-websocket"
+version = "0.1.0"
+authors = ["Richard Dodd <richard.o.dodd@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+wasm-bindgen = "0.2.54"
+js-sys = "0.3.31"
+futures-core = { version = "0.3", optional = true }
+futures-channel = { version = "0.3", optional = true }
+gloo-events = { path = "../events", version = "0.1" }
+futures-sink = { version = "0.3.4", optional = true }
+
+[dependencies.web-sys]
+version = "0.3.19"
+features = [
+    "Window",
+    "DomException",
+    "WebSocket",
+    "BinaryType",
+    "MessageEvent",
+    "CloseEvent",
+    "ErrorEvent",
+]
+
+[features]
+default = []
+futures = ["futures-core", "futures-channel", "futures-sink"]
+
+
+[dev-dependencies]
+wasm-bindgen-futures = "0.4.4"
+wasm-bindgen-test = "0.3.4"
+futures-util = "0.3"
+futures_rs = { version = "0.3.4", package = "futures" }
+
+[workspace]
